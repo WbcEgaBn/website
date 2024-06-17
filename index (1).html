@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMG HIIIIIIIIII!!!!!!!!!</title>
+    <link rel="icon" type="image/x-icon" href="boffy-removebg-preview.png"">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Permanent+Marker&family=Shadows+Into+Light&display=swap');
+
+        body {
+            margin: 0;
+            font-family: "Shadows Into Light", cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(120deg, #ff7e5f, #feb47b);
+        }
+
+        #countdown {
+            text-align: center;
+            color: #fff;
+        }
+
+        #timer {
+            font-size: 2em;
+            margin-top: 30px;
+        }
+
+        #timer div {
+            display: inline-block;
+            text-align: center;
+            margin: 0 30px;
+        }
+
+        #timer span {
+            display: block;
+        }
+
+        .label {
+            font-size: 0.5em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">
+        <h2>hi there wonderful c/o 2024 people!
+        i will be sharing my deepest secrets with all of you here. however, id like to wait 24 years to do that!</h2>
+        <h3>i'm not even joking 💀. I might add some new features to this website at some point. see you then!</h3>
+        <div id="timer">
+            <div>
+                <span id="days"></span>
+                <span class="label">Days</span>
+            </div>
+            <div>
+                <span id="hours"></span>
+                <span class="label">Hours</span>
+            </div>
+            <div>
+                <span id="minutes"></span>
+                <span class="label">Minutes</span>
+            </div>
+            <div>
+                <span id="seconds"></span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+        <h4>add me on discord: hauhsoj</h4>
+    </div>
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function setGradient() {
+            const color1 = getRandomColor();
+            const color2 = getRandomColor();
+            document.body.style.background = `linear-gradient(120deg, ${color1}, ${color2})`;
+        }
+
+        setGradient();
+
+        const targetDate = new Date('June 1, 2048 9:00:00 EST').getTime();
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const timeRemaining = targetDate - now;
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            const displayDays = days;
+            const displayHours = hours.toString().padStart(2, '0');
+            const displayMinutes = minutes.toString().padStart(2, '0');
+            const displaySeconds = seconds.toString().padStart(2, '0');
+
+            document.getElementById('days').innerText = displayDays;
+            document.getElementById('hours').innerText = displayHours;
+            document.getElementById('minutes').innerText = displayMinutes;
+            document.getElementById('seconds').innerText = displaySeconds;
+
+            if (timeRemaining < 0) {
+                clearInterval(countdown);
+                document.getElementById('timer').innerText = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
